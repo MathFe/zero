@@ -3,6 +3,7 @@ package com.mathfe.zero.Controller;
 
 import com.mathfe.zero.Entity.User;
 import com.mathfe.zero.Service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public User create(@RequestBody User user) {
+    public User create(@Valid @RequestBody User user) {
         return userService.createUser(user);
     }
 
@@ -27,7 +28,7 @@ public class UserController {
         return userService.findUser(id);
     }
 
-    @GetMapping("list")
+    @GetMapping("/list")
     public List<User> findAll(){
         return userService.listUsers();
     }
@@ -38,7 +39,7 @@ public class UserController {
     }
 
     @PutMapping("/update/{id}")
-    public User update(@PathVariable Long id, @RequestBody User user) {
+    public User update(@PathVariable Long id, @Valid @RequestBody User user) {
         return userService.updateUser(id, user);
     }
 
