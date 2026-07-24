@@ -39,8 +39,8 @@ public class UserService {
         Optional<User> existentUser = userRepository.findById(id);
         if(existentUser.isPresent()){
             User user = existentUser.get();
-            user.setName(existentUser.get().getName());
-            user.setEmail(existentUser.get().getEmail());
+            user.setName(updatedUser.getName());
+            user.setEmail(updatedUser.getEmail());
             return userRepository.save(user);
         }
         throw new RuntimeException("User not find.");
