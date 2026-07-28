@@ -20,6 +20,7 @@ public class UserController {
 
     @PostMapping("/create")
     public User create(@Valid @RequestBody User user) {
+        User created = userService.createUser(user);
         return userService.createUser(user);
     }
 
@@ -35,6 +36,7 @@ public class UserController {
 
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
+        userService.deleteUser(id);
         userService.deleteUser(id);
     }
 
